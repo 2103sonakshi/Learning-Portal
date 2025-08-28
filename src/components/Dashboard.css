@@ -1,0 +1,359 @@
+/* 👇 Global resets (keep for consistency across browsers) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Manual styles for elements that aren't Material-UI components.
+  These are kept to maintain the base layout and design.
+*/
+
+body {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* 👇 Navbar Styling */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  height: 60px;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 18px;
+  transition: background 0.3s ease;
+}
+
+.navbar-title {
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-align: center;
+  flex-grow: 1;
+}
+
+.navbar-title .welcome {
+  font-size: 18px;
+}
+
+.navbar-title .learning-portal {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+nav .profile-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid;
+  cursor: pointer;
+}
+
+nav .profile-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Profile Dropdown */
+.profile-dropdown {
+  position: absolute;
+  top: 70px;
+  left: 20px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  width: 180px;
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease-in-out;
+  pointer-events: none;
+  z-index: 1100;
+}
+
+.profile-dropdown.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.profile-dropdown button {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.profile-dropdown button:hover {
+  opacity: 0.8;
+}
+
+/* 👇 Dashboard content styling */
+.dashboard-container {
+  padding: 100px 20px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+  transition: padding 0.3s ease;
+}
+
+/* 👇 Search and Add Resource */
+.search-add-container {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.search-input,
+.resource-input {
+  width: 70%;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.search-input:focus,
+.resource-input:focus {
+  outline: none;
+  border-color: #2196f3;
+}
+
+.add-button {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-button:hover {
+  opacity: 0.8;
+}
+
+/* 👇 Resource List - Updated to Grid Layout */
+.resource-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.resource-item {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.resource-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.delete-button {
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+  opacity: 0.8;
+}
+
+/* 👇 Card Design for Resources */
+.card {
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.card .title {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.card .description {
+  font-size: 14px;
+}
+
+.card .actions {
+  display: flex;
+  gap: 10px;
+}
+
+.card .actions button {
+  padding: 8px 15px;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.card .actions button:hover {
+  opacity: 0.8;
+}
+
+/* 👇 Responsive Design (for smaller screens) */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 90px 15px 20px;
+  }
+
+  .search-add-container {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .search-input,
+  .resource-input {
+    width: 100%;
+  }
+
+  .add-button {
+    width: 100%;
+  }
+
+  .card {
+    padding: 10px;
+  }
+
+  .resource-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ⬇️ NEW STYLES ADDED TO FIX ADD RESOURCE SECTION AND PROFILE PANEL */
+.add-resource-container {
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.add-resource-container h2 {
+  margin-bottom: 15px;
+  font-size: 20px;
+}
+
+.add-resource-container form {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.add-resource-container input {
+  flex: 1;
+}
+
+.add-resource-container button {
+  flex-shrink: 0;
+}
+
+/* 🟢 CORRECTED PROFILE PANEL STYLING */
+.profile-panel {
+  position: fixed;
+  top: 0;
+  right: -320px;
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease-in-out;
+  z-index: 1000;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.profile-panel.show {
+  right: 0;
+}
+
+.profile-panel button.close-profile-panel {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.profile-panel button.close-profile-panel:hover {
+  opacity: 0.8;
+}
+
+.profile-panel input[type="text"],
+.profile-panel input[type="password"],
+.profile-panel input[type="email"],
+.profile-panel input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.profile-panel button {
+  padding: 8px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.profile-panel button:hover {
+  opacity: 0.8;
+}
+
+/* NEW: Modal Styling for Settings */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.modal-overlay.show {
+  display: flex;
+}
+
+.modal-content {
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}

@@ -1,0 +1,123 @@
+/* Container */
+.auth-container {
+  /* Increased max-width for better desktop appearance */
+  max-width: 500px;
+  /* Use a combination of viewport units and a fixed margin for better vertical centering */
+  margin: 10vh auto 60px auto;
+  padding: 30px; /* Increased padding for more internal space */
+  border-radius: 12px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  text-align: center;
+  font-family: "Segoe UI", sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Dark mode */
+.auth-container.dark {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+.auth-container h2 {
+  margin-bottom: 25px; /* Increased margin */
+  color: #333;
+  font-size: 2rem; /* Made the heading bigger */
+}
+
+.auth-container.dark h2 {
+  color: #e0e0e0;
+}
+
+/* Form styling */
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Increased gap */
+}
+
+/* Input group with icon */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-group .icon {
+  position: absolute;
+  left: 15px; /* Adjusted icon position */
+  color: #888;
+  pointer-events: none;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 12px 12px 40px; /* Adjusted padding to accommodate the icon */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px; /* Increased font size for better readability */
+  transition: border-color 0.2s;
+}
+
+.input-group input:focus {
+  border-color: #2196f3;
+  outline: none;
+}
+
+.auth-container.dark .input-group input {
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+  border: 1px solid #333;
+}
+
+/* Button */
+.auth-form button {
+  padding: 12px; /* Increased padding */
+  border: none;
+  border-radius: 8px;
+  background-color: #2196f3;
+  color: white;
+  cursor: pointer;
+  font-size: 18px; /* Increased font size */
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.auth-form button:hover {
+  background-color: #1976d2;
+  transform: translateY(-2px); /* Slightly more pronounced hover effect */
+}
+
+.auth-form button:disabled {
+  background-color: #90caf9;
+  cursor: not-allowed;
+}
+
+/* Error message */
+.error-message {
+  color: #f44336;
+  font-size: 14px;
+  margin-top: -10px;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* Toggle between login/signup */
+.auth-container p {
+  margin-top: 20px; /* Increased margin */
+  cursor: pointer;
+  color: #2196f3;
+  font-size: 16px; /* Ensured font is readable */
+}
+
+.auth-container p:hover {
+  text-decoration: underline;
+}
+
+/* Added a media query for better mobile responsiveness */
+@media (max-width: 600px) {
+  .auth-container {
+    max-width: 90%; /* On smaller screens, use a percentage of the viewport width */
+    margin: 5vh auto; /* Adjusted vertical margin for mobile */
+    padding: 20px;
+  }
+}
