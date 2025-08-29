@@ -29,7 +29,7 @@ function TakeQuiz() {
       try {
         setLoading(true);
         const res = await axios.get(
-          `http://localhost:5000/api/quizzes/${quizId}`
+          `http://localhost:${SERVER_URL}/api/quizzes/${quizId}`
         );
         setQuiz(res.data);
         // Reset answers and score when a new quiz is loaded

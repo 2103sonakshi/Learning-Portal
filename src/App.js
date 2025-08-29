@@ -17,6 +17,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
+import { SERVER_URL } from "./constant";
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -45,15 +46,18 @@ function App() {
 
   const handleLogin = async (email, password) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", {
-        email,
-        password,
-      });
+      const res = await axios.post(
+        "https://learning-portal-server-f232.onrender.com/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
       setIsLoggedIn(true);
       setUserName(res.data.name || email);
       setUserEmail(email);
       if (res.data.profilePic) {
-        const picUrl = `http://localhost:5000/${res.data.profilePic}`;
+        const picUrl = `${SERVER_URL}/${res.data.profilePic}`;
         setProfilePic(picUrl);
         localStorage.setItem("profilePic", picUrl);
       }
@@ -70,7 +74,7 @@ function App() {
 
   const handleSignup = async (name, email, password) => {
     try {
-      await axios.post("http://localhost:5000/api/auth/register", {
+      await axios.post("http://localhost:${SERVER_URL}/api/auth/register", {
         name,
         email,
         password,

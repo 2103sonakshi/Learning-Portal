@@ -6,7 +6,9 @@ const ResourceList = ({ resources, onResourceDeleted }) => {
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(`http://localhost:5000/api/resources/${confirmId}`);
+      await axios.delete(
+        `http://localhost:${SERVER_URL}/api/resources/${confirmId}`
+      );
       onResourceDeleted();
       setConfirmId(null);
     } catch (err) {

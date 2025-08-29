@@ -60,7 +60,7 @@ const AddQuiz = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/quizzes", {
+      await axios.post("http://localhost:${SERVER_URL}/api/quizzes", {
         title,
         questions,
       });

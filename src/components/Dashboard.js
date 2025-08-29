@@ -116,7 +116,9 @@ function Dashboard() {
 
   const fetchResources = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/resources");
+      const response = await axios.get(
+        "http://localhost:${SERVER_URL}/api/resources"
+      );
       setResources(response.data);
     } catch (error) {
       console.error("Error fetching resources", error);
@@ -126,7 +128,10 @@ function Dashboard() {
   const handleAddResource = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/resources", newResource);
+      await axios.post(
+        "http://localhost:${SERVER_URL}/api/resources",
+        newResource
+      );
       setNewResource({ title: "", description: "", type: "", link: "" });
       fetchResources();
       setSnackbarOpen(true);
@@ -143,7 +148,7 @@ function Dashboard() {
   const handleConfirmDelete = async () => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/resources/${resourceToDelete}`
+        `http://localhost:${SERVER_URL}/api/resources/${resourceToDelete}`
       );
       setResources(resources.filter((res) => res._id !== resourceToDelete));
       setDialogOpen(false);

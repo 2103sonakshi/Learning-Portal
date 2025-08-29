@@ -152,7 +152,7 @@ function Navbar({
     try {
       const payload = { email: userEmail, name: trimmed };
       const response = await axios.post(
-        "http://localhost:5000/api/user/update-name",
+        "http://localhost:${SERVER_URL}/api/user/update-name",
         payload,
         { headers: { ...getAuthHeader() } }
       );
@@ -186,7 +186,7 @@ function Navbar({
     try {
       const payload = { email: userEmail, newPassword };
       await axios.post(
-        "http://localhost:5000/api/user/change-password",
+        "http://localhost:${SERVER_URL}/api/user/change-password",
         payload,
         { headers: { ...getAuthHeader() } }
       );
@@ -218,7 +218,7 @@ function Navbar({
     try {
       const payload = { email: userEmail, phone: trimmed };
       const response = await axios.post(
-        "http://localhost:5000/api/user/update-phone",
+        "http://localhost:${SERVER_URL}/api/user/update-phone",
         payload,
         { headers: { ...getAuthHeader() } }
       );
@@ -258,7 +258,7 @@ function Navbar({
       formData.append("email", userEmail);
       formData.append("profilePic", newProfilePicFile);
       const response = await axios.post(
-        "http://localhost:5000/api/user/update-profile-pic",
+        "http://localhost:${SERVER_URL}/api/user/update-profile-pic",
         formData,
         {
           headers: {
@@ -302,7 +302,7 @@ function Navbar({
       const payload = { email: userEmail };
       const headers = getAuthHeader();
       await axios.post(
-        "http://localhost:5000/api/user/remove-profile-pic",
+        "http://localhost:${SERVER_URL}/api/user/remove-profile-pic",
         payload,
         { headers }
       );
@@ -325,7 +325,7 @@ function Navbar({
   const handleDeleteAccount = async () => {
     try {
       await axios.post(
-        "http://localhost:5000/api/user/delete-account",
+        "http://localhost:${SERVER_URL}/api/user/delete-account",
         { email: userEmail },
         { headers: { ...getAuthHeader() } }
       );

@@ -10,7 +10,7 @@ const AddResourceForm = ({ onResourceAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:5000/api/resources", {
+      await axios.post("http://localhost:${SERVER_URL}/api/resources", {
         title,
         description,
         type,

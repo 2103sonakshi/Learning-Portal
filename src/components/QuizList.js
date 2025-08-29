@@ -39,7 +39,9 @@ function QuizList() {
     const fetchQuizzes = async () => {
       try {
         setLoading(true);
-        const res = await axios.get("http://localhost:5000/api/quizzes");
+        const res = await axios.get(
+          "http://localhost:${SERVER_URL}/api/quizzes"
+        );
         setQuizzes(res.data);
       } catch (err) {
         console.error("Failed to load quizzes:", err);
@@ -54,7 +56,7 @@ function QuizList() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this quiz?")) {
       try {
-        await axios.delete(`http://localhost:5000/api/quizzes/${id}`);
+        await axios.delete(`http://localhost:${SERVER_URL}/api/quizzes/${id}`);
         setQuizzes(quizzes.filter((quiz) => quiz._id !== id));
         alert("Quiz deleted successfully!");
       } catch (error) {
