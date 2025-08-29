@@ -13,6 +13,7 @@ import {
   Paper,
   Alert,
 } from "@mui/material";
+import SERVER_URL from "../constant";
 
 function TakeQuiz() {
   const { quizId } = useParams();
@@ -28,9 +29,7 @@ function TakeQuiz() {
     const fetchQuiz = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          `http://localhost:${SERVER_URL}/api/quizzes/${quizId}`
-        );
+        const res = await axios.get(`${SERVER_URL}/api/quizzes/${quizId}`);
         setQuiz(res.data);
         // Reset answers and score when a new quiz is loaded
         setAnswers({});

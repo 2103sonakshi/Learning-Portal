@@ -12,6 +12,7 @@ import {
   Alert,
 } from "@mui/material";
 import { styled } from "@mui/system";
+import SERVER_URL from "../constant";
 
 const QuizPaper = styled(Paper)(({ theme }) => ({
   padding: theme.spacing(3),
@@ -39,9 +40,7 @@ function QuizList() {
     const fetchQuizzes = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(
-          "http://localhost:${SERVER_URL}/api/quizzes"
-        );
+        const res = await axios.get(`${SERVER_URL}/api/quizzes`);
         setQuizzes(res.data);
       } catch (err) {
         console.error("Failed to load quizzes:", err);
@@ -56,7 +55,7 @@ function QuizList() {
   const handleDelete = async (id) => {
     if (window.confirm("Are you sure you want to delete this quiz?")) {
       try {
-        await axios.delete(`http://localhost:${SERVER_URL}/api/quizzes/${id}`);
+        await axios.delete(`${SERVER_URL}/api/quizzes/${id}`);
         setQuizzes(quizzes.filter((quiz) => quiz._id !== id));
         alert("Quiz deleted successfully!");
       } catch (error) {

@@ -1,14 +1,13 @@
 import React, { useState } from "react";
 import axios from "axios";
+import SERVER_URL from "../constant";
 
 const ResourceList = ({ resources, onResourceDeleted }) => {
   const [confirmId, setConfirmId] = useState(null);
 
   const confirmDelete = async () => {
     try {
-      await axios.delete(
-        `http://localhost:${SERVER_URL}/api/resources/${confirmId}`
-      );
+      await axios.delete(`${SERVER_URL}/api/resources/{confirmId}`);
       onResourceDeleted();
       setConfirmId(null);
     } catch (err) {

@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import SERVER_URL from "../constant";
 
 const AddQuiz = () => {
   const [title, setTitle] = useState("");
@@ -60,7 +61,7 @@ const AddQuiz = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:${SERVER_URL}/api/quizzes", {
+      await axios.post(`${SERVER_URL}/api/quizzes`, {
         title,
         questions,
       });

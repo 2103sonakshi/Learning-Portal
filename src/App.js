@@ -17,8 +17,8 @@ import { ThemeProvider } from "@mui/material/styles";
 import { lightTheme, darkTheme } from "./theme";
 import CssBaseline from "@mui/material/CssBaseline";
 import { Box } from "@mui/material";
-import { SERVER_URL } from "./constant";
-
+import SERVER_URL from "./constant.js";
+console.log("url", SERVER_URL);
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignup, setShowSignup] = useState(false);
@@ -74,7 +74,7 @@ function App() {
 
   const handleSignup = async (name, email, password) => {
     try {
-      await axios.post("http://localhost:${SERVER_URL}/api/auth/register", {
+      await axios.post(`${SERVER_URL}/api/auth/register`, {
         name,
         email,
         password,

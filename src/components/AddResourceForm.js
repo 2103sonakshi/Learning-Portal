@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import SERVER_URL from "../constant";
 
 const AddResourceForm = ({ onResourceAdded }) => {
   const [title, setTitle] = useState("");
@@ -10,7 +11,7 @@ const AddResourceForm = ({ onResourceAdded }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:${SERVER_URL}/api/resources", {
+      await axios.post(`${SERVER_URL}/api/resources`, {
         title,
         description,
         type,

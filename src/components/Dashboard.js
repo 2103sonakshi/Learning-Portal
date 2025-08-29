@@ -25,6 +25,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import "./Dashboard.css";
+import SERVER_URL from "../constant";
 
 const ResourceCard = ({ resource, onDelete }) => {
   const getIcon = (type) => {
@@ -116,9 +117,7 @@ function Dashboard() {
 
   const fetchResources = async () => {
     try {
-      const response = await axios.get(
-        "http://localhost:${SERVER_URL}/api/resources"
-      );
+      const response = await axios.get(`${SERVER_URL}/api/resources`);
       setResources(response.data);
     } catch (error) {
       console.error("Error fetching resources", error);
@@ -128,10 +127,7 @@ function Dashboard() {
   const handleAddResource = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(
-        "http://localhost:${SERVER_URL}/api/resources",
-        newResource
-      );
+      await axios.post(`${SERVER_URL}/api/resources`, newResource);
       setNewResource({ title: "", description: "", type: "", link: "" });
       fetchResources();
       setSnackbarOpen(true);
@@ -147,9 +143,7 @@ function Dashboard() {
 
   const handleConfirmDelete = async () => {
     try {
-      await axios.delete(
-        `http://localhost:${SERVER_URL}/api/resources/${resourceToDelete}`
-      );
+      await axios.delete(`${SERVER_URL}/api/resources/${resourceToDelete}`);
       setResources(resources.filter((res) => res._id !== resourceToDelete));
       setDialogOpen(false);
       setResourceToDelete(null);
